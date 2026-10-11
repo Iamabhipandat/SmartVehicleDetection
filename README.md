@@ -240,3 +240,141 @@ SmartVehicleDetection/
 ```
 
 Additional packages and files may exist in the repository. Update this structure as the implementation develops.
+## Getting Started
+
+### Prerequisites
+
+Install the following tools:
+
+- Java Development Kit compatible with the version specified in `pom.xml`.
+- Git.
+- IntelliJ IDEA or another Java IDE.
+- Maven, or use the included Maven Wrapper.
+- A database supported by the project configuration.
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Iamabhipandat/SmartVehicleDetection.git
+cd SmartVehicleDetection
+```
+
+### 2. Open the Project
+
+Open the cloned folder in IntelliJ IDEA and allow Maven to import the project and resolve dependencies.
+
+### 3. Configure the Database
+
+Create the required database and configure its connection details in your local application configuration.
+
+Ensure that the database server is running before starting the application.
+
+### 4. Build the Application
+
+On Windows PowerShell, run:
+
+```powershell
+.\mvnw.cmd clean package
+```
+
+If the Maven Wrapper is unavailable, use an installed Maven distribution:
+
+```bash
+mvn clean package
+```
+
+### 5. Run the Backend
+
+On Windows PowerShell:
+
+```powershell
+.\mvnw.cmd spring-boot:run
+```
+
+Alternatively, run the main Spring Boot application class directly from IntelliJ IDEA.
+
+The server port and base URL depend on the application configuration.
+
+## Configuration
+
+Use environment variables or a local configuration file for environment-specific settings.
+
+Example environment variable names:
+
+```env
+SPRING_DATASOURCE_URL=jdbc:your_database_url
+SPRING_DATASOURCE_USERNAME=your_database_username
+SPRING_DATASOURCE_PASSWORD=your_database_password
+JWT_SECRET=replace_with_a_secure_secret
+```
+
+These names are illustrative. Ensure that the application is configured to read the corresponding variables.
+
+For local development:
+
+1. Configure the database connection.
+2. Set required secrets outside version control.
+3. Confirm that the database schema and migrations are ready.
+4. Start the backend.
+5. Test the available endpoints using Postman or another API client.
+
+Never commit real credentials. Provide a sanitised `.env.example` or equivalent configuration template instead.
+
+## API Documentation
+
+The platform is intended to expose versioned REST endpoints for vehicle operations.
+
+Example endpoint categories include:
+
+| Endpoint | Purpose |
+|---|---|
+| `POST /api/v1/events/vehicle-entry` | Ingest a simulated vehicle entry event |
+| Vehicle lookup endpoint | Retrieve vehicle details |
+| Journey endpoint | Retrieve journey state and history |
+| Verification endpoint | Execute or retrieve verification checks |
+| Queue endpoint | View site queue information |
+| Bay endpoint | View bay availability and assignments |
+| Alerts endpoint | View and manage operational alerts |
+| Dashboard endpoint | Retrieve operational KPIs |
+| Audit endpoint | Query historical audit records |
+| Authentication endpoints | Authenticate users and manage access |
+
+These are documentation targets, not confirmation that every route is implemented. Replace generic endpoint descriptions with actual HTTP methods, paths, request examples, and responses after verifying the backend controllers.
+
+API documentation can be provided through OpenAPI/Swagger. A Postman or Bruno collection can also be included for testing.
+
+## Security
+
+Security considerations include:
+
+- Backend-enforced role-based authorisation.
+- Input validation for incoming vehicle events.
+- Secure password handling.
+- Protected API endpoints.
+- Environment-based secret management.
+- Duplicate event detection and safe state transitions.
+- Auditing of authorised overrides.
+- Meaningful error responses without exposing internal implementation details.
+
+## Database Design
+
+The relational database may include the following entities, depending on the implemented schema:
+
+- Users
+- Roles
+- Sites
+- Cameras
+- Vehicles
+- Journeys
+- Journey Events
+- Verification Results
+- Alerts
+- Queues
+- Bays
+- Service Sessions
+- Audit Logs
+
+Relationships, constraints, and indexes should support vehicle lookup, site filtering, timestamps, and journey status.
+
+Add an ER diagram based on the actual entities and their relationships to document the implemented database design.
+
