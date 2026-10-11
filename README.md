@@ -377,4 +377,119 @@ The relational database may include the following entities, depending on the imp
 Relationships, constraints, and indexes should support vehicle lookup, site filtering, timestamps, and journey status.
 
 Add an ER diagram based on the actual entities and their relationships to document the implemented database design.
+## Testing
+
+The following scenarios should be covered as the implementation matures:
+
+- Successful vehicle entry and exit.
+- Eligible and non-eligible vehicles.
+- Expired certification and missing vehicle records.
+- External verification service failures.
+- Duplicate vehicle entry events.
+- Invalid journey state transitions.
+- Queue overload and unavailable bays.
+- Unauthorized operator actions.
+- Alert acknowledgement and resolution.
+- Real-time connection loss and recovery.
+- Multiple sites and concurrent events.
+
+Run the available automated tests with:
+
+```powershell
+.\mvnw.cmd test
+```
+
+Document the actual test cases, expected results, and execution status as testing is implemented.
+
+## Performance and Reliability
+
+The system is intended to process vehicle events reliably and maintain consistent journey records.
+
+Important reliability considerations include:
+
+- Duplicate event prevention.
+- Validation of journey state transitions.
+- Handling unavailable external verification services.
+- Recovery from real-time connection interruptions.
+- Safe handling of concurrent vehicle events.
+- Database constraints and transaction management.
+- Appropriate logging and error handling.
+
+The hiring assignment specifies a target of at least 20 vehicle events per minute. Validate this through performance testing before reporting measured results.
+
+## Future Enhancements
+
+Potential improvements include:
+
+- Real automatic number plate recognition integration.
+- Live camera streaming.
+- WebSocket-based dashboard updates.
+- Configurable eligibility rules.
+- Advanced queue and bay allocation.
+- Multi-site analytics and reporting.
+- Event replay and missed-event recovery.
+- Docker-based deployment and CI/CD.
+- Monitoring, structured logs, and performance testing.
+- CSV export and richer historical reports.
+- Automated API and integration tests.
+
+## Deployment
+
+The application can be prepared for deployment after configuring its database, environment variables, and runtime requirements.
+
+Recommended deployment documentation includes:
+
+- Backend hosting instructions.
+- Database provisioning and migrations.
+- Environment variable configuration.
+- Frontend deployment, if applicable.
+- API base URL configuration.
+- Health checks and error monitoring.
+- Build and deployment commands.
+
+Add the live application URL here once a working deployment is available.
+
+**Live Application:** To be added.
+
+## Project Documentation
+
+The following resources can be added to the repository as the project progresses:
+
+- System architecture diagram.
+- Entity Relationship Diagram (ERD).
+- API documentation.
+- Postman or Bruno collection.
+- `.env.example` configuration template.
+- Event simulator or sample seed data.
+- Automated test documentation.
+- Demo video demonstrating the complete vehicle journey.
+
+## Design Decisions
+
+The project is designed around a structured vehicle journey and backend business rules rather than arbitrary frontend status changes.
+
+An event-oriented approach helps maintain a chronological operational history and provides a foundation for real-time dashboard updates.
+
+A relational database is suitable for maintaining relationships among vehicles, journeys, sites, service bays, verification records, alerts, and audit logs.
+
+For a larger deployment, the architecture could evolve to include message queues, caching, horizontally scaled API services, and distributed real-time event delivery.
+
+These are architectural directions and should be distinguished from features already implemented.
+
+## Author
+
+**Abhinav Tiwari**
+
+GitHub: [@Iamabhipandat](https://github.com/Iamabhipandat)
+
+Project Repository: [SmartVehicleDetection](https://github.com/Iamabhipandat/SmartVehicleDetection)
+
+## Acknowledgements
+
+Developed in the context of a Full Stack Developer Hiring Assignment focused on vehicle compliance, journey management, real-time operational monitoring, and reliable backend architecture.
+
+---
+
+*This README should be updated as implementation progresses so that setup instructions, API documentation, architecture diagrams, and feature descriptions accurately reflect the current repository.*
+
 
